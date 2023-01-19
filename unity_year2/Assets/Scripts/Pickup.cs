@@ -16,7 +16,7 @@ public class Pickup : MonoBehaviour
    
     private void Update()
     {
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if(heldObj == null)
             {
@@ -35,7 +35,7 @@ public class Pickup : MonoBehaviour
             
             if (heldObj != null)
             {
-               // MoveObject();
+               MoveObject();
             }
         }
     }
