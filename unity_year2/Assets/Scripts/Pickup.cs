@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] Transform holdArea;
     private GameObject heldObj;
     private Rigidbody heldObjRB;
+    private BoxCollider objCollider;
 
     [Header("Physics Parameters")]
     [SerializeField] private float pickupRange = 5.0f;
@@ -16,11 +17,11 @@ public class Pickup : MonoBehaviour
    
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if(heldObj == null)
+            if (heldObj == null)
             {
-                //pickup object on condition of there currently being no held object
+                //pickup object when there is no held object and E is pressed
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
                 {
@@ -29,23 +30,9 @@ public class Pickup : MonoBehaviour
             }
             else
             {
-                //if there is a object being held, drop the object
+                //if there is a object being held when we press E, drop the object
                 DropObject();
             }
-            
-            if (heldObj != null)
-            {
-               MoveObject();
-            }
-        }
-    }
-
-    void MoveObject()
-    {
-        if (Vector3.Distance(heldObj.transform.position, holdArea.position) > 0.1f)
-        {
-            Vector3 moveDirection = (holdArea.position - heldObj.transform.position);
-            heldObjRB.AddForce(moveDirection * pickupForce);
         }
     }
 
