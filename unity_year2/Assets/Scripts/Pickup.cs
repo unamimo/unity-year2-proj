@@ -17,12 +17,14 @@ public class Pickup : MonoBehaviour
    
     private void Update()
     {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.red, pickupRange);
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (heldObj == null)
             {
                 //pickup object when there is no held object and E is pressed
-                RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
                 {
                     PickupObject(hit.transform.gameObject);
@@ -32,6 +34,21 @@ public class Pickup : MonoBehaviour
             {
                 //if there is a object being held when we press E, drop the object
                 DropObject();
+            }
+        }
+        if (heldObj != null)
+        {
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
+            {
+                if (hit.collider.tag == "Environment")
+                {
+                    Debug.Log("it's the environment");
+                    DropObject();
+                }
+                else if (hit.collider.tag == "Player")
+                {
+                    Debug.Log("it's the player");
+                }
             }
         }
     }
@@ -61,5 +78,12 @@ public class Pickup : MonoBehaviour
         //moves the object position to the direction the player is facing using the camera (holdArea)
         heldObj.transform.parent = null;
         heldObj = null;
+    }
+
+    void CheckCollisions(Collider other)
+    //Do something on collision
+    {
+        //DropObject();
+        Debug.Log("Collision Detected");
     }
 }

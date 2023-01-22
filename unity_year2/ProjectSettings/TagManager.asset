@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - holdable
+  - Environment
   layers:
   - Default
   - TransparentFX
