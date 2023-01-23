@@ -2,14 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
 
     private static GameController _gameController = null;
     public int score = 0;
-    public Camera _Camera;
-    [SerializeField]
+    public int currentCheckpoint = 0;
+    static int totalCheckpoints = 2;
+    private Camera _Camera;
+    public InputAction startAction;
+    public InputAction pauseAction;
+    public GameObject[] checkpoints = new GameObject[totalCheckpoints];
+
+    private void OnEnable()
+    {
+        startAction.Enable();
+        pauseAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        startAction.Disable();
+        pauseAction.Disable();
+    }
 
     public enum EGameState
     {
@@ -29,7 +46,6 @@ public class GameController : MonoBehaviour
         //Assign our static reference to this one we just created
         _gameController = this;
 
-        
     }
     // Start is called before the first frame update
     void Start()
@@ -41,22 +57,25 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
+        Debug.Log(currentCheckpoint);
         switch (_eGameState)
         { //checks made every frame depending on the current game state
             case EGameState.MainMenu:
                 _Camera.transform.position = new Vector3(50, 0, -10); //move camera to main menu screen
                 UnityEngine.Debug.Log("CHECKING");
-                if (Input.GetKeyDown(KeyCode.P))
+               // if (Input.GetKeyDown(KeyCode.P))
+                if (startAction.triggered)
                 {
+                    
                     RestartGame(); //refresh game scene
                     ChangeState(EGameState.Playing);
+
                 }
                 break;
 
             case EGameState.Playing:
-                if (Input.GetKeyDown(KeyCode.Escape))
+                // if (Input.GetKeyDown(KeyCode.Escape))
+                if (pauseAction.triggered)
                     ChangeState(EGameState.Paused); //pause the game when escape is pressed
                 /*
                 if (something)
@@ -67,13 +86,13 @@ public class GameController : MonoBehaviour
                 break;
 
             case EGameState.Paused:
-                if (Input.GetKeyDown(KeyCode.Escape))
+                if (pauseAction.triggered)
                     ChangeState(EGameState.Playing); //resume back to playing if escape is pressed again
                 break;
 
             case EGameState.Gameover:
                 _Camera.transform.position = new Vector3(70, 0, -10); //move camera to game over screen
-                if (Input.GetKeyDown(KeyCode.P))
+                if (startAction.triggered)
                 {
                     ChangeState(EGameState.MainMenu);
                 }
@@ -81,7 +100,7 @@ public class GameController : MonoBehaviour
 
             case EGameState.Win:
                 _Camera.transform.position = new Vector3(90, 0, -10); //move camera to win screen
-                if (Input.GetKeyDown(KeyCode.P))
+                if (startAction.triggered)
                 {
                     ChangeState(EGameState.MainMenu);
                 }
@@ -102,7 +121,7 @@ public class GameController : MonoBehaviour
             ////////////////////////////////////////////////////////////////
             case EGameState.MainMenu:
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = false; //hide the UI whilst in the main menu
-                GameObject.Find("Buttons").GetComponent<Canvas>().enabled = true; 
+                //GameObject.Find("Buttons").GetComponent<Canvas>().enabled = true; 
                 Time.timeScale = 0.0f; //flow of time in the game is multiplied by 0, consequently stopping anything from moving or spawning
                 break;
             ////////////////////////////////////////////////////////////////
