@@ -148,7 +148,7 @@ PrefabInstance:
     - target: {fileID: 8061915610235160854, guid: 4efa150e5602b2040a3cca822607fa4e,
         type: 3}
       propertyPath: currentCheckpoint
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8061915610235160854, guid: 4efa150e5602b2040a3cca822607fa4e,
         type: 3}
@@ -375,7 +375,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 256
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

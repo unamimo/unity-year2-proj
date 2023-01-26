@@ -57,12 +57,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentCheckpoint);
+        //Debug.Log(currentCheckpoint);
         switch (_eGameState)
         { //checks made every frame depending on the current game state
             case EGameState.MainMenu:
                 _Camera.transform.position = new Vector3(50, 0, -10); //move camera to main menu screen
-                UnityEngine.Debug.Log("CHECKING");
+                //UnityEngine.Debug.Log("CHECKING");
                // if (Input.GetKeyDown(KeyCode.P))
                 if (startAction.triggered)
                 {
