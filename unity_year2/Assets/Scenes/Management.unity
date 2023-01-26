@@ -148,7 +148,7 @@ PrefabInstance:
     - target: {fileID: 8061915610235160854, guid: 4efa150e5602b2040a3cca822607fa4e,
         type: 3}
       propertyPath: currentCheckpoint
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8061915610235160854, guid: 4efa150e5602b2040a3cca822607fa4e,
         type: 3}
@@ -450,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &2106081684
 Light:
   m_ObjectHideFlags: 0
