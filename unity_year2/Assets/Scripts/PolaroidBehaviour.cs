@@ -15,9 +15,12 @@ public class PolaroidBehaviour : MonoBehaviour
     public InputAction takePhotoInput;
     public InputAction holdUpPhoto;
     Texture2D capture;
+    public Camera _Camera;
 
     [SerializeField]
     private Image photoDisplayArea;
+    [SerializeField]
+    private RenderTexture renderTexture;
 
     [SerializeField]
     private GameObject cameraFlash;
@@ -76,11 +79,18 @@ public class PolaroidBehaviour : MonoBehaviour
     IEnumerator TakePhoto()
     {
         cameraFlash.SetActive(true);
-        yield return new WaitForEndOfFrame();
-        Rect regionToRead = new Rect(0, 0, Screen.width, Screen.height);
+        //_Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
+       // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
+        yield return new WaitForEndOfFrame();   
+        Rect regionToRead = new Rect(0, 0, renderTexture.width, renderTexture.height);
+        RenderTexture currentRenderTexture = RenderTexture.active;
+        RenderTexture.active = renderTexture; 
         capture.ReadPixels(regionToRead, 0, 0, false);
         capture.Apply();
         ShowPhoto();
+        // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
+        // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
+        RenderTexture.active = currentRenderTexture;
         yield return new WaitForSeconds(flashTime);
         cameraFlash.SetActive(false);
     }
