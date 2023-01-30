@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    private GameController _gameController;
     [SerializeField]
     private PlatformPath waypointPath;
-
     [SerializeField]
     private float speed;
 
     private int targetWaypointIndex;
-
     private Transform previousWaypoint;
     private Transform targetWaypoint;
 
@@ -22,12 +21,16 @@ public class MovingPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _gameController = GameObject.Find("GameManager").GetComponent<GameController>();
         TargetNextWaypoint();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_gameController.GetState() != GameController.EGameState.Playing)
+            return;
+
         elapsed += Time.deltaTime;
 
         float elapsedPercent = elapsed / timeToWaypoint;
@@ -51,4 +54,5 @@ public class MovingPlatform : MonoBehaviour
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / speed;
     }
+
 }
