@@ -5,17 +5,26 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    private TextMeshProUGUI KeyText;
-    private TextMeshProUGUI RedKeyText;
+    private TextMeshProUGUI ThisKeyText;
     // Start is called before the first frame update
     void Start()
     {
-        KeyText = GetComponent<TextMeshProUGUI>();
+        ThisKeyText = GetComponent<TextMeshProUGUI>();
     }
 
     public void UpdateKeyText(Inventory inventory)
     {
-        KeyText.text = inventory.KeyNum.ToString();
-        RedKeyText.text = inventory.RedKeyNum.ToString();
+        if(gameObject.tag == "Key")
+        {
+            ThisKeyText.text = inventory.KeyNum.ToString();
+        }
+        if(gameObject.tag == "RedKey")
+        {
+            ThisKeyText.text = inventory.RedKeyNum.ToString();
+        }
+        if(gameObject.tag == "GreenKey")
+        {
+            ThisKeyText.text = inventory.GreenKeyNum.ToString();
+        }
     }
 }

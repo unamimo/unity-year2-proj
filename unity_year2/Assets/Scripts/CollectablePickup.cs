@@ -8,11 +8,22 @@ public class CollectablePickup : MonoBehaviour
     {
         Inventory inventory = other.GetComponent<Inventory>();
 
-        if (inventory != null && gameObject.tag == "Collectable")
+        if (inventory != null && gameObject.tag == "Key")
         {
             inventory.KeysCollected();
             gameObject.SetActive(false);
         }
+        if (inventory != null && gameObject.tag == "RedKey")
+        {
+            inventory.RedKeysCollected();
+            gameObject.SetActive(false);
+        }
+        if (inventory != null && gameObject.tag == "GreenKey")
+        {
+            inventory.GreenKeysCollected();
+            gameObject.SetActive(false);
+        }
+
     }
 
 }
