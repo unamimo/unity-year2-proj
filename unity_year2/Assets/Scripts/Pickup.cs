@@ -1,3 +1,8 @@
+///////////////////////////////
+///with reference from SpeedTutor: https://www.youtube.com/watch?v=6bFCQqabfzo
+/////////////////////////////////
+
+
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -7,6 +12,7 @@ public class Pickup : MonoBehaviour
 {
     [Header("Pickup Settings")]
     [SerializeField] Transform holdArea;
+    [SerializeField] Transform MainCamera;
     private GameObject heldObj;
     private Rigidbody heldObjRB;
     private BoxCollider objCollider;
@@ -14,6 +20,7 @@ public class Pickup : MonoBehaviour
     [Header("Physics Parameters")]
     [SerializeField] private float pickupRange = 5.0f;
     [SerializeField] private float pickupForce = 150.0f;
+    [SerializeField] private float rotateSpeed = 100.0f;
    
     private void Update()
     {
@@ -49,6 +56,13 @@ public class Pickup : MonoBehaviour
                 {
                     Debug.Log("it's the player");
                 }
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    Vector3 moveDirection = (holdArea.position - heldObj.transform.position);
+                    heldObjRB.AddForce(transform.forward * pickupForce * 30);
+                    DropObject();
+                }
+                RotateObject();
             }
         }
     }
@@ -61,6 +75,7 @@ public class Pickup : MonoBehaviour
             heldObjRB.useGravity = false;
             heldObjRB.drag = 10;
             heldObjRB.constraints = RigidbodyConstraints.FreezeRotation;
+            heldObjRB.transform.rotation = Quaternion.identity;
 
             //moves the object position to the direction the player is facing using the camera (holdArea)
             heldObjRB.transform.parent = holdArea;
@@ -80,10 +95,31 @@ public class Pickup : MonoBehaviour
         heldObj = null;
     }
 
-    void CheckCollisions(Collider other)
-    //Do something on collision
+    void RotateObject()
     {
-        //DropObject();
-        Debug.Log("Collision Detected");
+        if (Input.GetKey(KeyCode.Z))
+        {
+            Debug.Log("Rotated left");
+            heldObjRB.constraints = RigidbodyConstraints.None;
+            heldObjRB.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.X))
+        {
+            Debug.Log("Rotated right");
+            heldObjRB.constraints = RigidbodyConstraints.None;
+            heldObjRB.transform.Rotate(Vector3.down * rotateSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.C))
+        {
+            Debug.Log("Rotated down");
+            heldObjRB.constraints = RigidbodyConstraints.None;
+            heldObjRB.transform.Rotate(Vector3.left * rotateSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.V))
+        {
+            Debug.Log("Rotated up");
+            heldObjRB.constraints = RigidbodyConstraints.None;
+            heldObjRB.transform.Rotate(Vector3.right * rotateSpeed * Time.deltaTime);
+        }
     }
 }

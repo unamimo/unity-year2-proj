@@ -7,6 +7,10 @@ TagManager:
   - CinemachineTarget
   - holdable
   - Environment
+  - Collectable
+  - Key
+  - RedKey
+  - GreenKey
   layers:
   - Default
   - TransparentFX

@@ -11,9 +11,6 @@ namespace StarterAssets
 #endif
 	public class FirstPersonController : MonoBehaviour
 	{
-
-		private GameController _gameController;
-
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
 		public float MoveSpeed = 4.0f;
@@ -100,7 +97,6 @@ namespace StarterAssets
 
 		private void Start()
 		{
-			_gameController = GameObject.Find("GameManager").GetComponent<GameController>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -108,11 +104,6 @@ namespace StarterAssets
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
-			
-			if (_gameController.currentCheckpoint != 0)
-            {
-				transform.position = _gameController.checkpoints[_gameController.currentCheckpoint - 1].transform.position;
-            }
 
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
@@ -121,8 +112,6 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (_gameController.GetState() != GameController.EGameState.Playing)
-				return;
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -130,8 +119,6 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			if (_gameController.GetState() != GameController.EGameState.Playing)
-				return;
 			CameraRotation();
 		}
 
@@ -227,7 +214,6 @@ namespace StarterAssets
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
-					FindObjectOfType<AudioControl>().Play("Jump");
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 				}
