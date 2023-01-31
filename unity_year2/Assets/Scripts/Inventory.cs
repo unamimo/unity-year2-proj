@@ -6,9 +6,9 @@ using UnityEngine.Events;
 public class Inventory : MonoBehaviour
 {
     //only this script can set the value but other scripts can get it
-    public int KeyNum { get; private set; }
-    public int RedKeyNum { get; private set; }
-    public int GreenKeyNum { get; private set; }
+    public int KeyNum;
+    public int RedKeyNum; 
+    public int GreenKeyNum;
     
     public UnityEvent<Inventory> OnKeyCollect;
 
