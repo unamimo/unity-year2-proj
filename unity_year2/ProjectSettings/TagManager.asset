@@ -5,7 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - CinemachineTarget
-  - CameraInvisible
+  - holdable
+  - Environment
+  - Collectable
+  - Key
+  - RedKey
+  - GreenKey
+  - InteractableObj
   layers:
   - Default
   - TransparentFX
@@ -17,9 +23,9 @@ TagManager:
   - 
   - Character
   - Ground
+  - Interact
   - CameraVisible
   - CameraInvisible
-  - 
   - 
   - 
   - 
