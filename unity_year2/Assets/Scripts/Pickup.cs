@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Pickup : MonoBehaviour
 {
@@ -16,18 +17,41 @@ public class Pickup : MonoBehaviour
     private GameObject heldObj;
     private Rigidbody heldObjRB;
     private BoxCollider objCollider;
+    public InputAction interact;
+    public InputAction rotLeft; // Z
+    public InputAction rotRight; // X
+    public InputAction rotDown; // C
+    public InputAction rotUp; // V
 
     [Header("Physics Parameters")]
     [SerializeField] private float pickupRange = 5.0f;
     [SerializeField] private float pickupForce = 150.0f;
     [SerializeField] private float rotateSpeed = 100.0f;
-   
+
+    private void OnEnable()
+    {
+        rotLeft.Enable();
+        rotRight.Enable();
+        rotDown.Enable();
+        rotUp.Enable();
+        interact.Enable();
+    }
+
+    private void OnDisable()
+    {
+        rotLeft.Disable();
+        rotRight.Disable();
+        rotDown.Disable();
+        rotUp.Disable();
+        interact.Disable();
+    }
+
     private void Update()
     {
         RaycastHit hit;
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.red, pickupRange);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (interact.triggered)
         {
             if (heldObj == null)
             {
@@ -97,25 +121,25 @@ public class Pickup : MonoBehaviour
 
     void RotateObject()
     {
-        if (Input.GetKey(KeyCode.Z))
+        if (rotLeft.triggered)
         {
             Debug.Log("Rotated left");
             heldObjRB.constraints = RigidbodyConstraints.None;
             heldObjRB.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.X))
+        else if (rotRight.triggered)
         {
             Debug.Log("Rotated right");
             heldObjRB.constraints = RigidbodyConstraints.None;
             heldObjRB.transform.Rotate(Vector3.down * rotateSpeed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.C))
+        else if (rotDown.triggered)
         {
             Debug.Log("Rotated down");
             heldObjRB.constraints = RigidbodyConstraints.None;
             heldObjRB.transform.Rotate(Vector3.left * rotateSpeed * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.V))
+        else if (rotUp.triggered)
         {
             Debug.Log("Rotated up");
             heldObjRB.constraints = RigidbodyConstraints.None;

@@ -20,7 +20,7 @@ public class DoorRaycast : MonoBehaviour
 
     private void Start()
     {
-        inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        inventory = GameObject.Find("PlayerCapsule").GetComponent<Inventory>();
     }
 
     private void Update()
