@@ -39,7 +39,8 @@ public static class DebugMenu
 	public static void ShowGameObject()
 	{
 		// Warning, only working in editor
-		long fileID = 8557368307400144879;
+		//PlayerCapsulefileIDs: 2009725739 915306247
+		long fileID = 2009725739;
 		GameObject resultGo = GetGameObjectFromFileID(fileID);
 		if (resultGo == null)
 		{
