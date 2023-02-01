@@ -11,6 +11,7 @@ TagManager:
   - Key
   - RedKey
   - GreenKey
+  - InteractableObj
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - 
   - Character
   - Ground
-  - 
+  - Interact
   - 
   - 
   - 
