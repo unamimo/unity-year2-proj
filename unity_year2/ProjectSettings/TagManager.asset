@@ -12,6 +12,7 @@ TagManager:
   - RedKey
   - GreenKey
   - InteractableObj
+  - MultiKey
   layers:
   - Default
   - TransparentFX
