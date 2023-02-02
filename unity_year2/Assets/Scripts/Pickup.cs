@@ -124,25 +124,25 @@ public class Pickup : MonoBehaviour
 
     void RotateObject()
     {
-        if (rotLeft.triggered)
+        if (rotLeft.ReadValue<float>() > 0.1f)
         {
             Debug.Log("Rotated left");
             heldObjRB.constraints = RigidbodyConstraints.None;
             heldObjRB.transform.Rotate(Vector3.up * rotateSpeed * Time.deltaTime);
         }
-        else if (rotRight.triggered)
+        else if (rotRight.ReadValue<float>() > 0.1f)
         {
             Debug.Log("Rotated right");
             heldObjRB.constraints = RigidbodyConstraints.None;
             heldObjRB.transform.Rotate(Vector3.down * rotateSpeed * Time.deltaTime);
         }
-        else if (rotDown.triggered)
+        else if (rotDown.ReadValue<float>() > 0.1f)
         {
             Debug.Log("Rotated down");
             heldObjRB.constraints = RigidbodyConstraints.None;
             heldObjRB.transform.Rotate(Vector3.left * rotateSpeed * Time.deltaTime);
         }
-        else if (rotUp.triggered)
+        else if (rotUp.ReadValue<float>() > 0.1f)
         {
             Debug.Log("Rotated up");
             heldObjRB.constraints = RigidbodyConstraints.None;
