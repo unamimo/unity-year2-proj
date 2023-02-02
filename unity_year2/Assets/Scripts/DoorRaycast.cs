@@ -32,7 +32,7 @@ public class DoorRaycast : MonoBehaviour
 
         if (Physics.Raycast(transform.position, fwd, out hit, RayLength, mask))
         {
-            if(hit.collider.CompareTag("InteractableObj") || hit.collider.CompareTag("RedKey"))
+            if(hit.collider.CompareTag("InteractableObj") || hit.collider.CompareTag("RedKey") || hit.collider.CompareTag("GreenKey"))
             {
                 if(!doOnce)
                 {
@@ -52,6 +52,15 @@ public class DoorRaycast : MonoBehaviour
                             Debug.Log("Red Key used");
                             raycastedObj.changeposition();
                             _player.GetComponent<Inventory>().RedKeyNum -= 1;
+                        }
+                    }
+                    else if (hit.collider.CompareTag("GreenKey"))
+                    {
+                        if (_player.GetComponent<Inventory>().GreenKeyNum > 0)
+                        {
+                            Debug.Log("Green Key used");
+                            raycastedObj.changeposition();
+                            _player.GetComponent<Inventory>().GreenKeyNum -= 1;
                         }
                     }
                     else

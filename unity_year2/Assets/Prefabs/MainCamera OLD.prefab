@@ -267,6 +267,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  throwObj:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 994f4f73-47c0-490a-92a3-1a66b426e228
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   pickupRange: 5
   pickupForce: 150
   rotateSpeed: 20

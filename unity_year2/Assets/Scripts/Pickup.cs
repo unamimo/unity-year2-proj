@@ -17,11 +17,12 @@ public class Pickup : MonoBehaviour
     private GameObject heldObj;
     private Rigidbody heldObjRB;
     private BoxCollider objCollider;
-    public InputAction interact;
+    public InputAction interact; // E
     public InputAction rotLeft; // Z
     public InputAction rotRight; // X
     public InputAction rotDown; // C
     public InputAction rotUp; // V
+    public InputAction throwObj; // R
 
     [Header("Physics Parameters")]
     [SerializeField] private float pickupRange = 5.0f;
@@ -35,6 +36,7 @@ public class Pickup : MonoBehaviour
         rotDown.Enable();
         rotUp.Enable();
         interact.Enable();
+        throwObj.Enable();
     }
 
     private void OnDisable()
@@ -44,6 +46,7 @@ public class Pickup : MonoBehaviour
         rotDown.Disable();
         rotUp.Disable();
         interact.Disable();
+        throwObj.Disable();
     }
 
     private void Update()
@@ -80,7 +83,7 @@ public class Pickup : MonoBehaviour
                 {
                     Debug.Log("it's the player");
                 }
-                if (Input.GetKeyDown(KeyCode.R))
+                if (throwObj.triggered)
                 {
                     Vector3 moveDirection = (holdArea.position - heldObj.transform.position);
                     heldObjRB.AddForce(transform.forward * pickupForce * 30);
