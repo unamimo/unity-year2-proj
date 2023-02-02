@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DoorInteract : MonoBehaviour
 {
@@ -10,6 +11,17 @@ public class DoorInteract : MonoBehaviour
     bool active = false;
     private Inventory inventory;
     public GameObject _player;
+    public InputAction openDoor;
+
+    private void OnEnable()
+    {
+        openDoor.Enable();
+    }
+
+    private void OnDisable()
+    {
+        openDoor.Disable();
+    }
 
     private void Start()
     {
@@ -21,7 +33,7 @@ public class DoorInteract : MonoBehaviour
         RaycastHit hit;
         active = Physics.Raycast(cam.position, cam.TransformDirection(Vector3.forward), out hit, ActivationDistance);
 
-        if (Input.GetKeyDown(KeyCode.E) && active == true)
+        if (openDoor.triggered && active == true)
         {
             if(gameObject.tag == "GreenKey")
             {
