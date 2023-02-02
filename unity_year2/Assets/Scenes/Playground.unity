@@ -1127,6 +1127,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0271df749728104eac22c3d897fd8ce, type: 3}
+--- !u!1 &755101003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755101004}
+  m_Layer: 0
+  m_Name: HoldArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &755101004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755101003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.29, y: 2.35, z: 2.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9005220659506012026}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &812652121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,7 +1673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9005220659506012026}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &915306247 stripped
 GameObject:
@@ -1910,8 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdde992422bfb64e9cb861454cb0afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdArea: {fileID: 4972141198893736248, guid: 647df7062c127ce4d9397fea496b1a41,
-    type: 3}
+  holdArea: {fileID: 755101004}
   MainCamera: {fileID: 0}
   interact:
     m_Name: Interact
@@ -1996,6 +2025,23 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Rot Up
+      m_Flags: 0
+    m_Flags: 0
+  throwObj:
+    m_Name: Throw Obj
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a0b5d4d0-bee0-46cc-a7d8-b0481f80024b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 51640b10-4aba-4a70-8a41-a021b17ea489
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Throw Obj
       m_Flags: 0
     m_Flags: 0
   pickupRange: 5
@@ -4788,7 +4834,7 @@ PrefabInstance:
     - target: {fileID: 7825594150799276648, guid: 3123e8686437b1b4ba44c0b0f6a72438,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7825594150799276648, guid: 3123e8686437b1b4ba44c0b0f6a72438,
         type: 3}
