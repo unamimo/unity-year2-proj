@@ -1930,6 +1930,74 @@ MonoBehaviour:
       m_Action: Interact
       m_Flags: 0
     m_Flags: 0
+  rotLeft:
+    m_Name: Rot Left
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 38dd4e46-298a-4ffd-8ad1-7b129ed2895f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: eab75dfb-a755-45e8-854d-291482ef0088
+      m_Path: <Keyboard>/z
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rot Left
+      m_Flags: 0
+    m_Flags: 0
+  rotRight:
+    m_Name: Rot Right
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2b248884-2c97-47f8-90d5-5ba94cb1d5cd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 852c3336-03d9-4620-b94b-5c840c86f4ca
+      m_Path: <Keyboard>/x
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rot Right
+      m_Flags: 0
+    m_Flags: 0
+  rotDown:
+    m_Name: Rot Down
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1bb5b487-0376-4367-8c4b-1a2b5ab28502
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 63dc0bf8-33c2-4d0a-af9c-a80e3d6b84c8
+      m_Path: <Keyboard>/c
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rot Down
+      m_Flags: 0
+    m_Flags: 0
+  rotUp:
+    m_Name: Rot Up
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5b3738cc-6be3-4e5e-af7e-f8a1a344f36b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 437dba8e-e11b-4dcc-ba34-31b26ec79661
+      m_Path: <Keyboard>/v
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rot Up
+      m_Flags: 0
+    m_Flags: 0
   pickupRange: 5
   pickupForce: 150
   rotateSpeed: 20
