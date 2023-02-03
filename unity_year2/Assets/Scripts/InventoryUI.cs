@@ -22,9 +22,9 @@ public class InventoryUI : MonoBehaviour
         {
             ThisKeyText.text = inventory.RedKeyNum.ToString();
         }
-        if(gameObject.tag == "GreenKey")
+        if(gameObject.tag == "BlueKey")
         {
-            ThisKeyText.text = inventory.GreenKeyNum.ToString();
+            ThisKeyText.text = inventory.BlueKeyNum.ToString();
         }
     }
 }

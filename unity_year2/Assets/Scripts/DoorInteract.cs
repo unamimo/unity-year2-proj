@@ -35,11 +35,11 @@ public class DoorInteract : MonoBehaviour
 
         if (openDoor.triggered && active == true)
         {
-            if(gameObject.tag == "GreenKey")
+            if(gameObject.tag == "BlueKey")
             {
-                if (_player.GetComponent<Inventory>().GreenKeyNum > 0)
+                if (_player.GetComponent<Inventory>().BlueKeyNum > 0)
                 {
-                    Debug.Log("Green Key used");
+                    Debug.Log("Blue Key used");
                     gameObject.transform.position += new Vector3(0, 5, 0);
                 }
             }
