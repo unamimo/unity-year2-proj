@@ -19,7 +19,8 @@ public class DoorController : MonoBehaviour
             /*gameObject.transform.position += new Vector3(0, 5, 0);
             doorOpen = true;*/
 
-            DoorAnim.Play("DoorSlideUp", 0, 0.0f);
+            //DoorAnim.Play("DoorSlideUp", 0, 0.0f);
+            DoorAnim.SetBool("doorOpening", true);
         }
     }
 }
