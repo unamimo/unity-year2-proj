@@ -42,7 +42,7 @@ public class PolaroidBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        capture = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+        capture = new Texture2D(Screen.width, Screen.height, TextureFormat.ARGB32, false);
         photoDisplayArea.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -1000);
         _gameController = GameObject.Find("GameManager").GetComponent<GameController>();
         cameraFlash.SetActive(false);
