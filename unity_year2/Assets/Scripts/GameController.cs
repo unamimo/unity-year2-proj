@@ -163,11 +163,11 @@ public class GameController : MonoBehaviour
         if (SceneManager.sceneCount > 1)
         {
             Debug.Log("Unloading Game Scene");
-            SceneManager.UnloadSceneAsync("Playground");
+            SceneManager.UnloadSceneAsync("LevelBlockout");
         }
         
         //Load a new game scene, resetting all assets within it
-        SceneManager.LoadScene("Playground", LoadSceneMode.Additive);
+        SceneManager.LoadScene("LevelBlockout", LoadSceneMode.Additive);
 
         
         score = 0; //reset the score
