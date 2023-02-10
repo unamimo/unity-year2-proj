@@ -10,9 +10,10 @@ TagManager:
   - Collectable
   - Key
   - RedKey
-  - GreenKey
   - InteractableObj
   - MultiKey
+  - CameraInvisible
+  - BlueKey
   layers:
   - Default
   - TransparentFX
