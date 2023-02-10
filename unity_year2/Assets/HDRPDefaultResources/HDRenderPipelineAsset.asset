@@ -148,15 +148,12 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
-  m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7,
-    type: 2}
+  m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7, type: 2}
   m_RenderPipelineRayTracingResources: {fileID: 0}
-  m_DefaultVolumeProfile: {fileID: 11400000, guid: 8d71366451db6164698a3ccff13ce3f4,
-    type: 2}
+  m_DefaultVolumeProfile: {fileID: 11400000, guid: cef13543ac40a484b9225cc82ef7c176, type: 2}
   m_LensAttenuation: 0
   m_UseRenderGraph: 1
-  m_DefaultLookDevProfile: {fileID: 11400000, guid: 2f23e03cd56cf834a8a622f446ab8ad7,
-    type: 2}
+  m_DefaultLookDevProfile: {fileID: 11400000, guid: 2be9c32ab63d65144ba281de3a4e2a06, type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
       data1: 72198262773251917
@@ -224,12 +221,12 @@ MonoBehaviour:
     supportTransparentBackface: 1
     supportTransparentDepthPrepass: 1
     supportTransparentDepthPostpass: 1
-    colorBufferFormat: 74
+    colorBufferFormat: 48
     supportCustomPass: 1
     customBufferFormat: 12
-    supportedLitShaderMode: 2
+    supportedLitShaderMode: 1
     planarReflectionResolution:
-      m_Values: 000100000004000000080000
+      m_Values: 000100000004000000040000
       m_SchemaId:
         m_Id: With3Levels
     supportDecals: 1
@@ -242,7 +239,7 @@ MonoBehaviour:
     decalLayerName5: Decal Layer 5
     decalLayerName6: Decal Layer 6
     decalLayerName7: Decal Layer 7
-    msaaSampleCount: 1
+    msaaSampleCount: 2
     supportMotionVectors: 1
     supportRuntimeDebugDisplay: 0
     supportRuntimeAOVAPI: 0
@@ -279,7 +276,7 @@ MonoBehaviour:
     hdShadowInitParams:
       maxShadowRequests: 128
       directionalShadowsDepthBits: 32
-      shadowFilteringQuality: 1
+      shadowFilteringQuality: 2
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
@@ -354,7 +351,7 @@ MonoBehaviour:
       ChromaticAberrationMaxSamples: 03000000060000000c000000
     lightSettings:
       useContactShadow:
-        m_Values: 000001
+        m_Values: 010000
         m_SchemaId:
           m_Id: With3Levels
     maximumLODLevel:
@@ -439,12 +436,12 @@ MonoBehaviour:
   allowShaderVariantStripping: 1
   enableSRPBatcher: 1
   shaderVariantLogLevel: 0
-  availableMaterialQualityLevels: -1
-  m_DefaultMaterialQualityLevel: 4
+  availableMaterialQualityLevels: 2
+  m_DefaultMaterialQualityLevel: 2
   diffusionProfileSettings: {fileID: 0}
   diffusionProfileSettingsList:
-  - {fileID: 11400000, guid: 29e68614daafc3145b074c1d69018252, type: 2}
-  - {fileID: 11400000, guid: f581e1a755302c545953b640b2b7bf7e, type: 2}
+  - {fileID: 11400000, guid: f59b3668d773be147955c16a1499a11e, type: 2}
+  - {fileID: 11400000, guid: 433cf994a8fea0f47b0f03128e7b304e, type: 2}
   beforeTransparentCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
