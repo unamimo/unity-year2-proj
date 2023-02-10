@@ -9,7 +9,10 @@ public class DoorRaycast : MonoBehaviour
     [SerializeField] private LayerMask LayerMaskInteract;
     [SerializeField] private string ExcludeLayerName = null;
 
-    private DoorController raycastedObj;
+    private TestDoor raycastedObj;
+
+    [SerializeField]
+    private TestDoor Door;
 
     [SerializeField] private Image crosshair = null;
     private bool isCrosshairActive;
@@ -36,7 +39,7 @@ public class DoorRaycast : MonoBehaviour
             {
                 if(!doOnce)
                 {
-                    raycastedObj = hit.collider.gameObject.GetComponent<DoorController>();
+                    raycastedObj = hit.collider.gameObject.GetComponent<TestDoor>();
                     CrosshairChange(true);
                 }
 
@@ -50,15 +53,15 @@ public class DoorRaycast : MonoBehaviour
                         if (_player.GetComponent<Inventory>().RedKeyNum > 0)
                         {
                             Debug.Log("Red Key used");
-                            raycastedObj.changeposition();
+                            raycastedObj.Open();
                         }
                     }
                     if (hit.collider.CompareTag("BlueKey"))
                     {
                         if (_player.GetComponent<Inventory>().BlueKeyNum > 0)
                         {
-                            Debug.Log("Green Key used");
-                            raycastedObj.changeposition();
+                            Debug.Log("Blue Key used");
+                            raycastedObj.Open();
                         }
                     }
                     if (hit.collider.CompareTag("Key"))
@@ -66,14 +69,14 @@ public class DoorRaycast : MonoBehaviour
                         if (_player.GetComponent<Inventory>().KeyNum > 0)
                         {
                             Debug.Log("Green Key used");
-                            raycastedObj.changeposition();
+                            raycastedObj.Open();
                         }
                     }
                     if (hit.collider.CompareTag("MultiKey"))
                     {
                         if (_player.GetComponent<Inventory>().KeyNum > 0 && _player.GetComponent<Inventory>().BlueKeyNum > 0 && _player.GetComponent<Inventory>().RedKeyNum > 0)
                         {
-                            raycastedObj.changeposition();
+                            raycastedObj.Open();
                         }
                     }
                 }

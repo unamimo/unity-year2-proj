@@ -52,7 +52,7 @@ public class Pickup : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.red, pickupRange);
+        //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward), Color.red, pickupRange);
 
         if (interact.triggered)
         {
