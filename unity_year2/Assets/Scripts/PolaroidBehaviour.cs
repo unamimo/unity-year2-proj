@@ -46,6 +46,7 @@ public class PolaroidBehaviour : MonoBehaviour
         photoDisplayArea.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -1000);
         _gameController = GameObject.Find("GameManager").GetComponent<GameController>();
         cameraFlash.SetActive(false);
+        _Camera.enabled = false;
     }
 
     // Update is called once per frame
@@ -78,6 +79,8 @@ public class PolaroidBehaviour : MonoBehaviour
 
     IEnumerator TakePhoto()
     {
+        
+        _Camera.enabled = true;
         cameraFlash.SetActive(true);
         //_Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
        // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
@@ -93,6 +96,7 @@ public class PolaroidBehaviour : MonoBehaviour
         RenderTexture.active = currentRenderTexture;
         yield return new WaitForSeconds(flashTime);
         cameraFlash.SetActive(false);
+        _Camera.enabled = false;
     }
 
     void ShowPhoto()
