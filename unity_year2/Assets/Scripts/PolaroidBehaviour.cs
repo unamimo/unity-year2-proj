@@ -56,7 +56,6 @@ public class PolaroidBehaviour : MonoBehaviour
             return;
         if ((takePhotoInput.triggered) && !(holdUpPhoto.ReadValue<float>() > 0.1f))
             {
-            UnityEngine.Debug.Log("yo");
             StartCoroutine(TakePhoto());
         }
 

@@ -33,7 +33,7 @@ public class BreakingPlatform : MonoBehaviour
         Debug.Log("Waiting...");
         yield return new WaitForSeconds(breakTime);
         Debug.Log("Drop");
-        FindObjectOfType<AudioControl>().Play("Fall");
+        FindObjectOfType<AudioControl>().Play("Fall", false);
         gameObject.SetActive(false);
     }
 }

@@ -19,9 +19,13 @@ public class AudioControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void Play(string name)
+    public void Play(string name, bool isLoop)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (isLoop == true)
+        {
+            s.source.loop = true;
+        }
         s.source.Play();
     }
 }
