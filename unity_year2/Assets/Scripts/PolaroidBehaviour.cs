@@ -17,6 +17,8 @@ public class PolaroidBehaviour : MonoBehaviour
     Texture2D capture;
     public Camera _Camera;
     private int soundIndex = 1;
+    public float takePhotoDelay;
+    private bool canTakePhoto = true;
 
     [SerializeField]
     private Image photoDisplayArea;
@@ -79,38 +81,45 @@ public class PolaroidBehaviour : MonoBehaviour
 
     IEnumerator TakePhoto()
     {
-        soundIndex = Random.Range(1, 4);
-        switch (soundIndex)
+        if (canTakePhoto)
         {
-            case 1:
-                FindObjectOfType<AudioControl>().Play("Shutter1", false);
-                break;
-            case 2:
-                FindObjectOfType<AudioControl>().Play("Shutter2", false);
-                break;
-            case 3:
-                FindObjectOfType<AudioControl>().Play("Shutter3", false);
-                break;
-            default:
-                break;
+            canTakePhoto = false;
+            soundIndex = Random.Range(1, 4);
+            switch (soundIndex)
+            {
+                case 1:
+                    FindObjectOfType<AudioControl>().Play("Shutter1", false);
+                    break;
+                case 2:
+                    FindObjectOfType<AudioControl>().Play("Shutter2", false);
+                    break;
+                case 3:
+                    FindObjectOfType<AudioControl>().Play("Shutter3", false);
+                    break;
+                default:
+                    break;
+            }
+            _Camera.enabled = true;
+            cameraFlash.SetActive(true);
+            //_Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
+            // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
+            yield return new WaitForEndOfFrame();
+            Rect regionToRead = new Rect(0, 0, renderTexture.width, renderTexture.height);
+            RenderTexture currentRenderTexture = RenderTexture.active;
+            RenderTexture.active = renderTexture;
+            capture.ReadPixels(regionToRead, 0, 0, false);
+            capture.Apply();
+            ShowPhoto();
+            // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
+            // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
+            RenderTexture.active = currentRenderTexture;
+            yield return new WaitForSeconds(flashTime);
+            cameraFlash.SetActive(false);
+            _Camera.enabled = false;
+            yield return new WaitForSeconds(takePhotoDelay);
+            canTakePhoto = true;
         }
-        _Camera.enabled = true;
-        cameraFlash.SetActive(true);
-        //_Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
-       // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
-        yield return new WaitForEndOfFrame();   
-        Rect regionToRead = new Rect(0, 0, renderTexture.width, renderTexture.height);
-        RenderTexture currentRenderTexture = RenderTexture.active;
-        RenderTexture.active = renderTexture; 
-        capture.ReadPixels(regionToRead, 0, 0, false);
-        capture.Apply();
-        ShowPhoto();
-        // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);
-        // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
-        RenderTexture.active = currentRenderTexture;
-        yield return new WaitForSeconds(flashTime);
-        cameraFlash.SetActive(false);
-        _Camera.enabled = false;
+        
     }
 
     void ShowPhoto()
