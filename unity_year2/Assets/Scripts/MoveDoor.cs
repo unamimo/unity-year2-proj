@@ -19,7 +19,7 @@ public class MoveDoor : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        SlidingDoor.transform.position = new Vector3(6.37f, 0.96f, 7.22f);
+        SlidingDoor.transform.position -= new Vector3(0, 5, 0);
         isOpened = false;
     }
 }
