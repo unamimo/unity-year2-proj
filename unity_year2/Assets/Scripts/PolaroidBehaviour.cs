@@ -16,6 +16,7 @@ public class PolaroidBehaviour : MonoBehaviour
     public InputAction holdUpPhoto;
     Texture2D capture;
     public Camera _Camera;
+    private int soundIndex = 1;
 
     [SerializeField]
     private Image photoDisplayArea;
@@ -78,7 +79,21 @@ public class PolaroidBehaviour : MonoBehaviour
 
     IEnumerator TakePhoto()
     {
-        
+        soundIndex = Random.Range(1, 4);
+        switch (soundIndex)
+        {
+            case 1:
+                FindObjectOfType<AudioControl>().Play("Shutter1", false);
+                break;
+            case 2:
+                FindObjectOfType<AudioControl>().Play("Shutter2", false);
+                break;
+            case 3:
+                FindObjectOfType<AudioControl>().Play("Shutter3", false);
+                break;
+            default:
+                break;
+        }
         _Camera.enabled = true;
         cameraFlash.SetActive(true);
         //_Camera.cullingMask = _Camera.cullingMask ^ (1 << 10);

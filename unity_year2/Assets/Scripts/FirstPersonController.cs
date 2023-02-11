@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
+
 
 namespace StarterAssets
 {
@@ -13,6 +16,7 @@ namespace StarterAssets
 	{
 
 		private GameController _gameController;
+		private int soundIndex;
 
 		[Header("Player")]
 		[Tooltip("Move speed of the character in m/s")]
@@ -23,6 +27,8 @@ namespace StarterAssets
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		public float footstepDelay;
+		private bool canPlaySound = true;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -211,6 +217,7 @@ namespace StarterAssets
 			{
 				// move
 				inputDirection = transform.right * _input.move.x + transform.forward * _input.move.y;
+				StartCoroutine(PlayFootstep());
 			}
 
 			// move the player
@@ -283,6 +290,37 @@ namespace StarterAssets
 
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		IEnumerator PlayFootstep()
+        {
+			if (canPlaySound) {
+				soundIndex = Random.Range(1, 6);
+				switch (soundIndex)
+				{
+					case 1:
+						FindObjectOfType<AudioControl>().Play("Step1", false);
+						break;
+					case 2:
+						FindObjectOfType<AudioControl>().Play("Step2", false);
+						break;
+					case 3:
+						FindObjectOfType<AudioControl>().Play("Step3", false);
+						break;
+					case 4:
+						FindObjectOfType<AudioControl>().Play("Step4", false);
+						break;
+					case 5:
+						FindObjectOfType<AudioControl>().Play("Step5", false);
+						break;
+					default:
+						break;
+				}
+				canPlaySound = false;
+				yield return new WaitForSeconds(footstepDelay);
+				canPlaySound = true;
+			}
+			
 		}
 	}
 }
