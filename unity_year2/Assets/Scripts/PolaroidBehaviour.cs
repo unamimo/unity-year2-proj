@@ -114,8 +114,8 @@ public class PolaroidBehaviour : MonoBehaviour
             // _Camera.cullingMask = _Camera.cullingMask ^ (1 << 11);
             RenderTexture.active = currentRenderTexture;
             yield return new WaitForSeconds(flashTime);
-            cameraFlash.SetActive(false);
             _Camera.enabled = false;
+            cameraFlash.SetActive(false);        
             yield return new WaitForSeconds(takePhotoDelay);
             canTakePhoto = true;
         }
