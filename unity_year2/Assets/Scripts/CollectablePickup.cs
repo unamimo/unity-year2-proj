@@ -18,9 +18,9 @@ public class CollectablePickup : MonoBehaviour
             inventory.RedKeysCollected();
             gameObject.SetActive(false);
         }
-        if (inventory != null && gameObject.tag == "BlueKey")
+        if (inventory != null && gameObject.tag == "GreenKey")
         {
-            inventory.BlueKeysCollected();
+            inventory.GreenKeysCollected();
             gameObject.SetActive(false);
         }
 

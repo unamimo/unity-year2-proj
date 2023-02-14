@@ -7,8 +7,8 @@ public class Inventory : MonoBehaviour
 {
     //only this script can set the value but other scripts can get it
     public int KeyNum;
-    public int RedKeyNum; 
-    public int BlueKeyNum;
+    public int RedKeyNum;
+    public int GreenKeyNum;
     
     public UnityEvent<Inventory> OnKeyCollect;
 
@@ -24,9 +24,10 @@ public class Inventory : MonoBehaviour
         OnKeyCollect.Invoke(this);
     }
 
-    public void BlueKeysCollected()
+    public void GreenKeysCollected()
     {
-        BlueKeyNum++;
+        GreenKeyNum++;
         OnKeyCollect.Invoke(this);
     }
+
 }
