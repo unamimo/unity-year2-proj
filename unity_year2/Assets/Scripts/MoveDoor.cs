@@ -9,7 +9,9 @@ public class MoveDoor : MonoBehaviour
     bool isOpened = false;
     bool doorclosing;
     private float openingSpeed = 5f;
-    public Vector3 initialPos;
+    private Vector3 initialPos;
+    public float maxDistanceUp = 11;
+    public float maxDistanceDown = 10;
 
     private void Start()
     {
@@ -38,7 +40,7 @@ public class MoveDoor : MonoBehaviour
         {
             SlidingDoor.transform.Translate(0, openingSpeed * Time.deltaTime, 0);
         }
-        if (Vector3.Distance(initialPos, SlidingDoor.transform.position) > 15)
+        if (Vector3.Distance(initialPos, SlidingDoor.transform.position) > maxDistanceUp)
         {
 
             isOpened = false;
@@ -48,7 +50,7 @@ public class MoveDoor : MonoBehaviour
         {
             SlidingDoor.transform.Translate(0, -openingSpeed * Time.deltaTime, 0);
         }
-        if (Vector3.Distance(initialPos, SlidingDoor.transform.position) < 10)
+        if (Vector3.Distance(initialPos, SlidingDoor.transform.position) < maxDistanceDown)
         {
             doorclosing = false;
         }
