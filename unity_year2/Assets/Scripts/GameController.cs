@@ -52,6 +52,8 @@ public class GameController : MonoBehaviour
     {
         _Camera = Camera.main; //_Camera cached as the primary one
         GameObject.Find("HUD").GetComponent<Canvas>().enabled = false; //hide the UI whilst in the main menu
+        GameObject.Find("MainMenu").GetComponent<Canvas>().enabled = true;
+        GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -121,26 +123,33 @@ public class GameController : MonoBehaviour
             ////////////////////////////////////////////////////////////////
             case EGameState.MainMenu:
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = false; //hide the UI whilst in the main menu
+                GameObject.Find("MainMenu").GetComponent<Canvas>().enabled = true;
+                GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
                 //GameObject.Find("Buttons").GetComponent<Canvas>().enabled = true; 
                 Time.timeScale = 0.0f; //flow of time in the game is multiplied by 0, consequently stopping anything from moving or spawning
                 break;
             ////////////////////////////////////////////////////////////////
             case EGameState.Playing:
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = true;
+                GameObject.Find("MainMenu").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
                 Time.timeScale = 1.0f; //resume flow of time
                 break;
             ////////////////////////////////////////////////////////////////
             case EGameState.Gameover:
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
                 Time.timeScale = 0.0f;
                 break;
             ////////////////////////////////////////////////////////////////
             case EGameState.Win:
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = false;
+                GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
                 Time.timeScale = 0.0f;
                 break;
             ////////////////////////////////////////////////////////////////
             case EGameState.Paused:
+                GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = true;
                 Time.timeScale = 0.0f;
                 break;
             ////////////////////////////////////////////////////////////////
