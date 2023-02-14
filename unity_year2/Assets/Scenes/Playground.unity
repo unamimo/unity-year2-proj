@@ -3053,6 +3053,7 @@ MonoBehaviour:
   doorOpen: 0
   doorAccessed: 0
   openingSpeed: 5
+  door: {fileID: 0}
 --- !u!95 &1883558107
 Animator:
   serializedVersion: 3
@@ -4461,6 +4462,7 @@ MonoBehaviour:
   doorOpen: 0
   doorAccessed: 0
   openingSpeed: 5
+  door: {fileID: 2107226633}
 --- !u!95 &2107226635
 Animator:
   serializedVersion: 3

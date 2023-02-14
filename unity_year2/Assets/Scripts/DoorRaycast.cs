@@ -9,7 +9,7 @@ public class DoorRaycast : MonoBehaviour
     [SerializeField] private LayerMask LayerMaskInteract;
     [SerializeField] private string ExcludeLayerName = null;
 
-    private DoorController door;
+    private DoorController doorscript;
 
     [SerializeField] private Image crosshair = null;
     private bool isCrosshairActive;
@@ -36,7 +36,7 @@ public class DoorRaycast : MonoBehaviour
             {
                 if(!doOnce)
                 {
-                    door = hit.collider.gameObject.GetComponent<DoorController>();
+                    doorscript = hit.collider.gameObject.GetComponent<DoorController>();
                     CrosshairChange(true);
                 }
 
@@ -50,7 +50,7 @@ public class DoorRaycast : MonoBehaviour
                         if (_player.GetComponent<Inventory>().RedKeyNum > 0)
                         {
                             Debug.Log("Red Key used");
-                            door.doorAccessed = true;
+                            doorscript.doorAccessed = true;
                         }
                     }
                     if (hit.collider.CompareTag("BlueKey"))
@@ -58,7 +58,7 @@ public class DoorRaycast : MonoBehaviour
                         if (_player.GetComponent<Inventory>().BlueKeyNum > 0)
                         {
                             Debug.Log("Blue Key used");
-                            door.moveDoorUp();
+                            //door.moveDoorUp();
                         }
                     }
                     if (hit.collider.CompareTag("Key"))
@@ -66,14 +66,14 @@ public class DoorRaycast : MonoBehaviour
                         if (_player.GetComponent<Inventory>().KeyNum > 0)
                         {
                             Debug.Log("Key used");
-                            door.moveDoorUp();
+                            //door.moveDoorUp();
                         }
                     }
                     if (hit.collider.CompareTag("MultiKey"))
                     {
                         if (_player.GetComponent<Inventory>().KeyNum > 0 && _player.GetComponent<Inventory>().BlueKeyNum > 0 && _player.GetComponent<Inventory>().RedKeyNum > 0)
                         {
-                            door.moveDoorUp();
+                            //door.moveDoorUp();
                         }
                     }
                 }
@@ -101,9 +101,9 @@ public class DoorRaycast : MonoBehaviour
             }
         }
 
-        if (door.doorAccessed == true)
+        if (doorscript.doorAccessed == true)
         {
-            door.moveDoorUp();
+            doorscript.moveDoorUp();
         }
     }
 }

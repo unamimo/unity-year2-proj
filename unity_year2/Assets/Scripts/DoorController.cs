@@ -9,6 +9,8 @@ public class DoorController : MonoBehaviour
     public bool doorAccessed = false;
     public float openingSpeed = 5f;
 
+    [SerializeField] private GameObject door;
+
 
     public void Awake()
     {
