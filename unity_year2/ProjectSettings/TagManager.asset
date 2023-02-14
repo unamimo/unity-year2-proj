@@ -17,6 +17,7 @@ TagManager:
   - GreenKey
   - openObject
   - Instantiate
+  - CineCamera
   layers:
   - Default
   - TransparentFX
