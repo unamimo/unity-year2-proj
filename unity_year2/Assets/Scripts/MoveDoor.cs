@@ -10,16 +10,30 @@ public class MoveDoor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!isOpened)
+        if(other.gameObject.tag == "openObject" || other.gameObject.tag == "Player")
         {
-            isOpened = true;
-            SlidingDoor.transform.position += new Vector3(0, 5, 0);
+            if (!isOpened)
+            {
+                isOpened = true;
+                SlidingDoor.transform.position += new Vector3(0, 5, 0);
+            }
+            print("OPen");
         }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        SlidingDoor.transform.position -= new Vector3(0, 5, 0);
-        isOpened = false;
+        if (isOpened)
+        {
+            if (other.gameObject.tag == "openObject" || other.gameObject.tag == "Player")
+            {
+                SlidingDoor.transform.position -= new Vector3(0, 5, 0);
+                isOpened = false;
+                print("Closed");
+            }
+        }
+
+
     }
 }
