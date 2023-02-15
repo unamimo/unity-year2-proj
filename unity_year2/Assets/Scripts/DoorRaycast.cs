@@ -100,7 +100,7 @@ public class DoorRaycast : MonoBehaviour
                 isCrosshairActive = false;
             }
         }
-
+       
         if (doorscript.doorAccessed == true)
         {
             doorscript.moveDoorUp();
