@@ -14,17 +14,23 @@ public class CreatesMovingPlatform : MonoBehaviour
 
     private Collider m_Collider;
     public GameObject platform;
+    private Collider p_Collider;
+    private MeshRenderer p_Renderer;
 
     void Start()
     {
         m_Collider = GetComponent<BoxCollider>();
+        p_Renderer = platform.GetComponent<MeshRenderer>();
+        p_Collider = platform.GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            platform.GetComponent<MeshRenderer>().enabled = true;
+            p_Renderer.enabled = true;
+            p_Collider.enabled = true;
+            this.gameObject.GetComponent<CreatesMovingPlatform>().enabled = false;
         }
     }
 }
