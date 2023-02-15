@@ -9,7 +9,7 @@ public class DoorRaycast : MonoBehaviour
     [SerializeField] private LayerMask LayerMaskInteract;
     [SerializeField] private string ExcludeLayerName = null;
 
-    private DoorController doorscript;
+    private DoorController raycastedObj;
 
     [SerializeField] private Image crosshair = null;
     private bool isCrosshairActive;
@@ -32,48 +32,48 @@ public class DoorRaycast : MonoBehaviour
 
         if (Physics.Raycast(transform.position, fwd, out hit, RayLength, mask))
         {
-            if(hit.collider.CompareTag("RedKey") || hit.collider.CompareTag("GreenKey") || hit.collider.CompareTag("Key") || hit.collider.CompareTag("MultiKey"))
+            if (hit.collider.CompareTag("RedKey") || hit.collider.CompareTag("GreenKey") || hit.collider.CompareTag("Key") || hit.collider.CompareTag("MultiKey"))
             {
-                if(!doOnce)
+                if (!doOnce)
                 {
-                    doorscript = hit.collider.gameObject.GetComponent<DoorController>();
+                    raycastedObj = hit.collider.gameObject.GetComponent<DoorController>();
                     CrosshairChange(true);
                 }
 
                 isCrosshairActive = true;
                 doOnce = true;
 
-                if(Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     if (hit.collider.CompareTag("RedKey"))
                     {
                         if (_player.GetComponent<Inventory>().RedKeyNum > 0)
                         {
                             Debug.Log("Red Key used");
-                            doorscript.doorAccessed = true;
+                            raycastedObj.changeposition();
                         }
                     }
                     if (hit.collider.CompareTag("GreenKey"))
                     {
                         if (_player.GetComponent<Inventory>().GreenKeyNum > 0)
                         {
-                            Debug.Log("Blue Key used");
-                            //door.moveDoorUp();
+                            Debug.Log("Green Key used");
+                            raycastedObj.changeposition();
                         }
                     }
                     if (hit.collider.CompareTag("Key"))
                     {
                         if (_player.GetComponent<Inventory>().KeyNum > 0)
                         {
-                            Debug.Log("Key used");
-                            //door.moveDoorUp();
+                            Debug.Log("Green Key used");
+                            raycastedObj.changeposition();
                         }
                     }
                     if (hit.collider.CompareTag("MultiKey"))
                     {
                         if (_player.GetComponent<Inventory>().KeyNum > 0 && _player.GetComponent<Inventory>().GreenKeyNum > 0 && _player.GetComponent<Inventory>().RedKeyNum > 0)
                         {
-                            //door.moveDoorUp();
+                            raycastedObj.changeposition();
                         }
                     }
                 }
@@ -81,7 +81,7 @@ public class DoorRaycast : MonoBehaviour
         }
         else
         {
-            if(isCrosshairActive)
+            if (isCrosshairActive)
             {
                 CrosshairChange(false);
                 doOnce = false;
@@ -90,7 +90,7 @@ public class DoorRaycast : MonoBehaviour
 
         void CrosshairChange(bool on)
         {
-            if(on && !doOnce)
+            if (on && !doOnce)
             {
                 crosshair.color = Color.red;
             }
@@ -99,11 +99,6 @@ public class DoorRaycast : MonoBehaviour
                 crosshair.color = Color.white;
                 isCrosshairActive = false;
             }
-        }
-       
-        if (doorscript.doorAccessed == true)
-        {
-            doorscript.moveDoorUp();
         }
     }
 }
