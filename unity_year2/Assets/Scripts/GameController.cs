@@ -86,7 +86,7 @@ public class GameController : MonoBehaviour
                 // if (Input.GetKeyDown(KeyCode.Escape))
                 Cursor.visible = false;
                 if (pauseAction.triggered)
-                    ChangeState(EGameState.Paused); //pause the game when escape is pressed
+                    ChangeState(EGameState.MainMenu); //pause the game when escape is pressed
                 /*
                 if (something)
                 {

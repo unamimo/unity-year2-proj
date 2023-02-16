@@ -28,10 +28,9 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (_gameController.currentCheckpoint < checkpointNo)
-            {
-                _gameController.currentCheckpoint = checkpointNo;
-            }
+            
+            _gameController.currentCheckpoint = checkpointNo;
+            
 
         }
 
