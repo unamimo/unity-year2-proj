@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
     private Animator DoorAnim;
     private bool doorOpen = false;
     public float rotateAmount = 90.0f;
-    public float duration = 1.0f;
+    private float duration = 0.75f;
     private float elapsed = 0.0f;
     private float elapsedPercent = 0.0f;
     Quaternion start;
