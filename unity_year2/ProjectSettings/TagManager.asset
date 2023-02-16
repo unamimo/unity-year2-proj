@@ -18,6 +18,7 @@ TagManager:
   - openObject
   - Instantiate
   - CineCamera
+  - NoKey
   layers:
   - Default
   - TransparentFX
