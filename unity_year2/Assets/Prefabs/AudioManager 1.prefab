@@ -1,0 +1,146 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2914085411056507744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2914085411056507745}
+  - component: {fileID: 2914085411056507746}
+  m_Layer: 0
+  m_Name: AudioManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2914085411056507745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914085411056507744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2914085411056507746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914085411056507744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc2ce538cfcbf44f87d6f6b6dccd504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MenuTheme
+    clip: {fileID: 8300000, guid: 3a61b9dd0cdf5804d80c421662ae0836, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: GameTheme
+    clip: {fileID: 8300000, guid: 1e026fee65d195c45ac8900497107f0a, type: 3}
+    volume: 0.022
+    source: {fileID: 0}
+  - name: CreditsTheme
+    clip: {fileID: 8300000, guid: 30c14e7b14da0d64d9dabeeda99e03dc, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Fall
+    clip: {fileID: 8300000, guid: 608e703a1034aa6488d6b5421bd128b0, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Teleport
+    clip: {fileID: 8300000, guid: a7ad71d92695a794c94d9729f2984c8a, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Thud1
+    clip: {fileID: 8300000, guid: a39650bffa948194eb45258a266178aa, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Thud2
+    clip: {fileID: 8300000, guid: 0629a5cddaa8c0d4d988fc5666472614, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Thud3
+    clip: {fileID: 8300000, guid: a9d6d79caed653e4d82a84fc1536f7df, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Thud4
+    clip: {fileID: 8300000, guid: d5fd4d570e0b3a642b8f97755e1f341b, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Thud5
+    clip: {fileID: 8300000, guid: 177263e7154aef04da228957fd46f146, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Step1
+    clip: {fileID: 8300000, guid: 501a29676b148cb4792ccb4d0ed51453, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Step2
+    clip: {fileID: 8300000, guid: 89e727367b31a5c4a9e81122622416ec, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Step3
+    clip: {fileID: 8300000, guid: 42ceeed475d3e934db1f348e0574fd68, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Step4
+    clip: {fileID: 8300000, guid: b2bf7898936d17f4ca0c291b93aef072, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Step5
+    clip: {fileID: 8300000, guid: b9be06de2e4b02a4787e58ff069778ad, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorSlide1
+    clip: {fileID: 8300000, guid: 73edbaed865e8784c8a25f75152511c3, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorSlide2
+    clip: {fileID: 8300000, guid: 9a5a8d9b52c57ff44aaaefafcf717600, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorSlide3
+    clip: {fileID: 8300000, guid: 6db43cfae319ce94f923031cdb811ba6, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorSlide4
+    clip: {fileID: 8300000, guid: fd2ed7bcc14ac2d409591192d364d3fb, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorSlide5
+    clip: {fileID: 8300000, guid: ecfcca38871d348499d60ba61d35b5ed, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Shutter1
+    clip: {fileID: 8300000, guid: 0cdf1a5a2221f3e4f97b309dd80e0978, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Shutter2
+    clip: {fileID: 8300000, guid: 517754607fa42bf4dbcdf2db4deea899, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: Shutter3
+    clip: {fileID: 8300000, guid: 65a750f6e82244c4292636ed5c397103, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorSwing
+    clip: {fileID: 8300000, guid: e88fa451c11067c4889f19e2a0df46d6, type: 3}
+    volume: 1
+    source: {fileID: 0}
+  - name: DoorLocked
+    clip: {fileID: 8300000, guid: 14e85270957c4ab41a36e1cdcfe440a2, type: 3}
+    volume: 1
+    source: {fileID: 0}
