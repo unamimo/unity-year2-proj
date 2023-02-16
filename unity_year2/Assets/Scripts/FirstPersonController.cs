@@ -103,6 +103,7 @@ namespace StarterAssets
 
 		private void Start()
 		{
+			Cursor.lockState = CursorLockMode.Confined;
 			_gameController = GameObject.Find("GameManager").GetComponent<GameController>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
