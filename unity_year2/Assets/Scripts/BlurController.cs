@@ -9,9 +9,9 @@ public class BlurController : MonoBehaviour
 
     //game objects
     public GameObject blurCanvas;   // the canvas itself
-    public GameObject blurLessCanvas;
-    public GameObject blurEvenLessCanvas;
-    public GameObject noBlur;
+    public GameObject blurMoreCanvas;
+    public GameObject blurEvenMoreCanvas;
+    public GameObject maxBlur;
 
     private void Start()
     {
@@ -27,21 +27,24 @@ public class BlurController : MonoBehaviour
             if (_gameController.currentCheckpoint == 0)
             {
                 blurCanvas.SetActive(false);
-                blurLessCanvas.SetActive(true);
+                blurMoreCanvas.SetActive(true);
+                Debug.Log("First check point "+_gameController.currentCheckpoint);
             }
 
             if (_gameController.currentCheckpoint == 1)
             {
                 blurCanvas.SetActive(false);
-                blurLessCanvas.SetActive(false);
-                blurEvenLessCanvas.SetActive(true);
+                blurMoreCanvas.SetActive(false);
+                blurEvenMoreCanvas.SetActive(true);
+                Debug.Log("Second check point " + _gameController.currentCheckpoint);
             }
 
             if (_gameController.currentCheckpoint == 2)
             {
                 blurCanvas.SetActive(false);
-                blurEvenLessCanvas.SetActive(false);
-                noBlur.SetActive(true);
+                blurEvenMoreCanvas.SetActive(false);
+                maxBlur.SetActive(true);
+                Debug.Log("Third check point " + _gameController.currentCheckpoint);
             }
         }
     }
