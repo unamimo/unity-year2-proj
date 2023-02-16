@@ -6,21 +6,56 @@ public class DoorController : MonoBehaviour
 {
     private Animator DoorAnim;
     private bool doorOpen = false;
+    public float rotateAmount = 90.0f;
+    public float duration = 1.0f;
+    private float elapsed = 0.0f;
+    private float elapsedPercent = 0.0f;
+    Quaternion start;
+    Quaternion end;
 
     public void Awake()
     {
         DoorAnim = gameObject.GetComponent<Animator>();
     }
 
+    void Start()
+    {
+        Vector3 degrees = new Vector3(0, 0, rotateAmount);
+        start = gameObject.transform.rotation;
+        end = start * Quaternion.Euler(degrees);
+    }
+
+    void Update()
+    {
+        if ((doorOpen == true) && (elapsedPercent < 1))
+        {
+            elapsed += Time.deltaTime;
+            elapsedPercent = elapsed / duration;
+            elapsedPercent = Mathf.SmoothStep(0, 1, elapsedPercent);
+
+            gameObject.transform.rotation = Quaternion.Slerp(start, end, elapsedPercent);
+            
+        }
+        
+
+
+    }
+
     public void changeposition()
     {
         if (!doorOpen)
         {
-            gameObject.transform.position += new Vector3(0, 5, 0);
             doorOpen = true;
 
-            DoorAnim.Play("DoorSlideUp", 0, 0.0f);
-            DoorAnim.SetBool("doorOpening", true);
+            
+
+
+            if (gameObject.tag == "MultiKey")
+            {
+                DoorAnim.Play("DoorSlideUp", 0, 0.0f);
+                DoorAnim.SetBool("doorOpening", true);
+            }
+            
         }
     }
 }

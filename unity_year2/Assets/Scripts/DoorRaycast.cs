@@ -32,7 +32,7 @@ public class DoorRaycast : MonoBehaviour
 
         if (Physics.Raycast(transform.position, fwd, out hit, RayLength, mask))
         {
-            if (hit.collider.CompareTag("RedKey") || hit.collider.CompareTag("GreenKey") || hit.collider.CompareTag("Key") || hit.collider.CompareTag("MultiKey"))
+            if (hit.collider.CompareTag("RedKey") || hit.collider.CompareTag("GreenKey") || hit.collider.CompareTag("Key") || hit.collider.CompareTag("MultiKey") || hit.collider.CompareTag("NoKey"))
             {
                 if (!doOnce)
                 {
@@ -45,6 +45,10 @@ public class DoorRaycast : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E))
                 {
+                    if (hit.collider.CompareTag("NoKey"))
+                    {
+                        raycastedObj.changeposition();
+                    }
                     if (hit.collider.CompareTag("RedKey"))
                     {
                         if (_player.GetComponent<Inventory>().RedKeyNum > 0)
