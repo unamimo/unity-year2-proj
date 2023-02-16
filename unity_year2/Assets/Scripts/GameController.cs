@@ -49,7 +49,7 @@ public class GameController : MonoBehaviour
 
         //Assign our static reference to this one we just created
         _gameController = this;
-
+        SceneManager.LoadScene("LevelBlockout", LoadSceneMode.Additive);
     }
     // Start is called before the first frame update
     void Start()
@@ -60,6 +60,7 @@ public class GameController : MonoBehaviour
         GameObject.Find("HUD").GetComponent<Canvas>().enabled = false; //hide the UI whilst in the main menu
         GameObject.Find("MainMenu").GetComponent<Canvas>().enabled = true;
         GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
+
     }
 
     // Update is called once per frame
