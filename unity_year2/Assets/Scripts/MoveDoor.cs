@@ -14,6 +14,7 @@ public class MoveDoor : MonoBehaviour
     public Vector3 initialPos;
     [HideInInspector]
     public Vector3 newPos;
+    private int soundIndex = 1;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class MoveDoor : MonoBehaviour
     {
         
         isOpened = true;
+        PlayDoorSound();
         
         /*
         isOpened = true;
@@ -45,6 +47,7 @@ public class MoveDoor : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        PlayDoorSound();
         
         isOpened = false;
         /*
@@ -104,5 +107,30 @@ public class MoveDoor : MonoBehaviour
             doorclosing = false;
         }
         */
+    }
+
+    void PlayDoorSound()
+    {
+        soundIndex = Random.Range(1, 6);
+        switch (soundIndex)
+        {
+            case 1:
+                FindObjectOfType<AudioControl>().Play("DoorSlide1", false);
+                break;
+            case 2:
+                FindObjectOfType<AudioControl>().Play("DoorSlide2", false);
+                break;
+            case 3:
+                FindObjectOfType<AudioControl>().Play("DoorSlide3", false);
+                break;
+            case 4:
+                FindObjectOfType<AudioControl>().Play("DoorSlide4", false);
+                break;
+            case 5:
+                FindObjectOfType<AudioControl>().Play("DoorSlide5", false);
+                break;
+            default:
+                break;
+        }
     }
 }

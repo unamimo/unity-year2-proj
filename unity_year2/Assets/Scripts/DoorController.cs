@@ -45,6 +45,7 @@ public class DoorController : MonoBehaviour
     {
         if (!doorOpen)
         {
+            FindObjectOfType<AudioControl>().Play("DoorSwing", false);
             doorOpen = true;
 
             

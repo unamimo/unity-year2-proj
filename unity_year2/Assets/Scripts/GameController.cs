@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindObjectOfType<AudioControl>().Play("MenuTheme", true);
         Cursor.visible = true;
         _Camera = Camera.main; //_Camera cached as the primary one
         GameObject.Find("HUD").GetComponent<Canvas>().enabled = false; //hide the UI whilst in the main menu
@@ -151,6 +152,7 @@ public class GameController : MonoBehaviour
         {
             ////////////////////////////////////////////////////////////////
             case EGameState.MainMenu:
+                FindObjectOfType<AudioControl>().Play("MenuTheme", true);
                 Cursor.visible = true;
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = false; //hide the UI whilst in the main menu
                 GameObject.Find("MainMenu").GetComponent<Canvas>().enabled = true;
@@ -174,6 +176,7 @@ public class GameController : MonoBehaviour
                 break;
             ////////////////////////////////////////////////////////////////
             case EGameState.Win:
+                FindObjectOfType<AudioControl>().Play("CreditsTheme", true);
                 GameObject.Find("HUD").GetComponent<Canvas>().enabled = false;
                 GameObject.Find("PauseMenu").GetComponent<Canvas>().enabled = false;
                 Time.timeScale = 0.0f;
