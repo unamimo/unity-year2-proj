@@ -63,6 +63,7 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+		private StarterAssetsInputs cursorthing;
 
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -97,6 +98,7 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+			cursorthing = gameObject.GetComponent<StarterAssetsInputs>();
 		}
 
 		private void Start()
@@ -127,6 +129,14 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			if(_gameController.GetState() == GameController.EGameState.MainMenu)
+            {
+				cursorthing.cursorLocked = false;
+            }
+            else
+            {
+				cursorthing.cursorLocked = true;
+            }
 		}
 
 		private void LateUpdate()

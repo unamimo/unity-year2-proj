@@ -14,7 +14,11 @@ public class GameController : MonoBehaviour
     private Camera _Camera;
     public InputAction startAction;
     public InputAction pauseAction;
+    public InputAction clickButton;
     public GameObject[] checkpoints = new GameObject[totalCheckpoints];
+
+    public GameObject credits;
+    public GameObject mainmenu;
 
     private void OnEnable()
     {
@@ -64,9 +68,11 @@ public class GameController : MonoBehaviour
         switch (_eGameState)
         { //checks made every frame depending on the current game state
             case EGameState.MainMenu:
-                _Camera.transform.position = new Vector3(50, 0, -10); //move camera to main menu screen
+                _Camera.transform.position = new Vector3(50, 0, -10); 
+                //move camera to main menu screen
                 //UnityEngine.Debug.Log("CHECKING");
-               // if (Input.GetKeyDown(KeyCode.P))
+                // if (Input.GetKeyDown(KeyCode.P))
+                Cursor.visible = true;
                 if (startAction.triggered)
                 {
                     
@@ -78,6 +84,7 @@ public class GameController : MonoBehaviour
 
             case EGameState.Playing:
                 // if (Input.GetKeyDown(KeyCode.Escape))
+                Cursor.visible = false;
                 if (pauseAction.triggered)
                     ChangeState(EGameState.Paused); //pause the game when escape is pressed
                 /*
@@ -105,7 +112,7 @@ public class GameController : MonoBehaviour
                 _Camera.transform.position = new Vector3(90, 0, -10); //move camera to win screen
                 if (startAction.triggered)
                 {
-                    ChangeState(EGameState.MainMenu);
+                    ChangeState(EGameState.Playing);
                 }
                 break;
 
@@ -116,6 +123,27 @@ public class GameController : MonoBehaviour
 
 
     }
+
+    public void startGame()
+    {
+        RestartGame();
+        ChangeState(EGameState.Playing);
+    }
+    public void exitgame()
+    {
+        Application.Quit();
+    }
+    public void creditButton()
+    {
+        mainmenu.SetActive(false);
+        credits.SetActive(true);
+    }
+    public void backtoMainMenu()
+    {
+        mainmenu.SetActive(true);
+        credits.SetActive(false);
+    }
+
     public void ChangeState(EGameState eGameState)
     {
         Debug.Log("#Change State - " + eGameState);
