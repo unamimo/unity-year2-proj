@@ -96,7 +96,7 @@ public class Pickup : MonoBehaviour
 
     void PickupObject(GameObject pickupobj)
     {
-        if ((pickupobj.GetComponent<Rigidbody>()) && (pickupobj.tag == "holdable"))
+        if ((pickupobj.GetComponent<Rigidbody>()))
         {
             heldObjRB = pickupobj.GetComponent<Rigidbody>();
             heldObjRB.useGravity = false;
