@@ -17,6 +17,7 @@ public class Pickup : MonoBehaviour
     private GameObject heldObj;
     private Rigidbody heldObjRB;
     private BoxCollider objCollider;
+    public LayerMask interactables;
     public InputAction interact; // E
     public InputAction rotLeft; // Z
     public InputAction rotRight; // X
@@ -25,7 +26,7 @@ public class Pickup : MonoBehaviour
     public InputAction throwObj; // R
 
     [Header("Physics Parameters")]
-    [SerializeField] private float pickupRange = 5.0f;
+    [SerializeField] private float pickupRange = 10.0f;
     [SerializeField] private float pickupForce = 150.0f;
     [SerializeField] private float rotateSpeed = 100.0f;
 
@@ -59,8 +60,10 @@ public class Pickup : MonoBehaviour
             if (heldObj == null)
             {
                 //pickup object when there is no held object and E is pressed
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange))
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickupRange, interactables))
                 {
+                    Debug.Log("" + hit.transform.gameObject);
+                    print("picking up");
                     PickupObject(hit.transform.gameObject);
                 }
             }
@@ -96,7 +99,8 @@ public class Pickup : MonoBehaviour
 
     void PickupObject(GameObject pickupobj)
     {
-        if ((pickupobj.GetComponent<Rigidbody>()))
+        print("PickupObject");
+        if (pickupobj.GetComponent<Rigidbody>() && pickupobj.gameObject.tag != "Player")
         {
             heldObjRB = pickupobj.GetComponent<Rigidbody>();
             heldObjRB.useGravity = false;

@@ -55,6 +55,7 @@ public class BreakingPlatform : MonoBehaviour
             default:
                 break;
         }
-        gameObject.SetActive(false);
+        Destroy(this.gameObject);
+        //gameObject.SetActive(false);
     }
 }
